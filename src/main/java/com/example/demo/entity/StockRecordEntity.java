@@ -5,6 +5,7 @@ import jakarta.persistance.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistance.GeneratedValue;
 import jakarta.persistance.GenerationType;
+import jakarta.persistance.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,7 +14,8 @@ public class WarehouseEntity{
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String warehouse;
-    private 
+    @ManyToOne(optional=false)
+    private Product product;
     private Integer currentQuality;
     private Integer reorderThreshold;
     private LocalDateTime lastUpdated;
