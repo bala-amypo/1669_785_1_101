@@ -38,10 +38,10 @@ public class PredictionRule{
     public void setAverageDaysWindow(Integer averageDaysWindow){
         this.averageDaysWindow=averageDaysWindow;
     }
-    public Integer getReorderThreshold(){
+    public Integer getMinDailyUsage(){
         return reorderThreshold;
     }
-    public void setReorderThreshold(Integer reorderThreshold){
+    public void setMinDailyUsage(Integer reorderThreshold){
         this.reorderThreshold=reorderThreshold;
     }
     public LocalDateTime getLastUpdated(){
