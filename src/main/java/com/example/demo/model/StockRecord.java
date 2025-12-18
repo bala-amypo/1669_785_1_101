@@ -1,12 +1,13 @@
 package com.example.demo.model;
 
 
-import jakarta.persistance.Id;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
-import jakarta.persistance.GeneratedValue;
-import jakarta.persistance.GenerationType;
-import jakarta.persistance.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
+
 import com.example.demo.model.Product;
 import com.example.demo.model.Warehouse;
 @Entity

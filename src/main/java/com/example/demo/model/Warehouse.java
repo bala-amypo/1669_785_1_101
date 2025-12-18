@@ -1,10 +1,13 @@
 package com.example.demo.model;
 
-import jakarta.persistance.Id;
+import com.example.demo.model.StockRecord;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
-import jakarta.persistance.GeneratedValue;
-import jakarta.persistance.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
+
 
 @Entity
 public class Warehouse{
