@@ -64,7 +64,7 @@ public class StockRecord{
     }
     public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
         this.id=id;
-        this.warehouseName=warehouseName;
+        this.warehouse=warehouse;
         this.currentQuantity=currentQuantity;
         this.reorderThreshold=reorderThreshold;
         this.lastUpdated=lastUpdated;

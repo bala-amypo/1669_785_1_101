@@ -39,7 +39,7 @@ public class ConsumptionLog{
     }
     
     public LocalDateTime getConsumedDate(){
-        return comsumedDate;
+        return consumedDate;
     }
     public void setConsumedDate(LocalDateTime consumedDate){
         this.consumedDate=consumedDate;
