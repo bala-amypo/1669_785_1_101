@@ -44,19 +44,20 @@ public class PredictionRule{
     public void setPassword(String password){
         this.password=password;
     }
-    
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
     public PredictionRule(){
         
     }
-    public PredictionRule(Long id,String ruleName,Integer averageDaysWindowInteger,Integer minDailyUsage,Integer maxDailyUsage,LocalDateTime createdAt){
+    public PredictionRule(Long id,String name,String email,String password,LocalDateTime createdAt){
         this.id=id;
-        this.ruleName=ruleName;
-        this.averageDaysWindow=averageDaysWindow;
-        this.minDailyUsage=minDailyUsage;
-        this.maxDailyUsage=maxDailyUsage;
+        this.name=name;
+        this.email=email;
+        this.password=password;
         this.createdAt=createdAt;
     }
 }
