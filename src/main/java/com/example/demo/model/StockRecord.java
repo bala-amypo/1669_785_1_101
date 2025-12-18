@@ -31,10 +31,16 @@ public class Warehouse{
     public Warehouse getWarehouse(){
         return warehouse;
     }
-    public void setWarehouse( warehouse){
+    public void setWarehouse(Warehouse warehouse){
         this.warehouse=warehouse;
     }
-    public String getLocation(){
+    public Product getProduct(){
+        return product;
+    }
+    public void setProduct(Product product){
+        this.product=product;
+    }
+    public Integer getCurrentQuali(){
         return location;
     }
     public void setLocation(String location){
