@@ -39,18 +39,24 @@ public class PredictionRule{
         this.averageDaysWindow=averageDaysWindow;
     }
     public Integer getMinDailyUsage(){
-        return reorderThreshold;
+        return minDailyUsage;
     }
-    public void setMinDailyUsage(Integer reorderThreshold){
-        this.reorderThreshold=reorderThreshold;
+    public void setMinDailyUsage(Integer minDailyUsage){
+        this.minDailyUsage=minDailyUsage;
     }
-    public LocalDateTime getLastUpdated(){
-        return lastUpdated;
+    public Integer getMaxDailyUsage(){
+        return maxDailyUsage;
     }
-    public void setLastUpdated(LocalDateTime lastUpdated){
-        this.lastUpdated=lastUpdated;
+    public void setMaxDailyUsage(Integer maxDailyUsage){
+        this.maxDailyUsage=maxDailyUsage;
     }
-    public StockRecord(){
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime lastUpdated){
+        this.createdAt=createdAt;
+    }
+    public PredictionRule(){
         
     }
     public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
