@@ -40,13 +40,19 @@ public class Warehouse{
     public void setProduct(Product product){
         this.product=product;
     }
-    public Integer getCurrentQuali(){
-        return location;
+    public Integer getCurrentQuantity(){
+        return currentQuantity;
     }
-    public void setLocation(String location){
-        this.location=location;
+    public void setCurrentQuantity(Integer currentQuantity){
+        this.currentQuantity=currentQuantity;
     }
-    public LocalDateTime getCreatedAt(){
+    public Integer getReorderThreshold(){
+        return reorderThreshold;
+    }
+    public void setReorderThreshold(Integer ReorderThreshold){
+        this.ReorderThreshold=ReorderThreshold;
+    }
+    public LocalDateTime getLastUpdated(){
         return createdAt;
     }
     public void setCreatedAt(LocalDateTime createdAt){
