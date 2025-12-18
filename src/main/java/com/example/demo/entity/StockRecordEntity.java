@@ -14,7 +14,7 @@ public class WarehouseEntity{
     private Long id;
     private String warehouse;
     private Integer currentQuality;
-    private Integer ;
+    private Integer reorderThreshold;
     private LocalDateTime lastUpdated;
 
     public Long getId(){
