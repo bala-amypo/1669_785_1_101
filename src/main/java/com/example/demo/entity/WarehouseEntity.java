@@ -40,10 +40,10 @@ public class WarehouseEntity{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public ProductEntity(){
+    public WarehouseEntity(){
         
     }
-    public ProductEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
+    public WarehouseEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
         this.location=location;
