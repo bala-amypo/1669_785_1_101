@@ -13,6 +13,7 @@ public class WarehouseEntity{
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String warehouse;
+    private 
     private Integer currentQuality;
     private Integer reorderThreshold;
     private LocalDateTime lastUpdated;
