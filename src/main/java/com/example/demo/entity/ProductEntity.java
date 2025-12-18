@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class ProductEntity{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     private String warehouseName;
     private String location;
     private LocalDateTime createdAt;
@@ -37,7 +37,16 @@ public class ProductEntity{
     public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setCreatedAt(Long id){
+    public void setCreatedAt(LocalDateTime createdAt){
+        this.createdAt=createdAt;
+    }
+    public ProductEntity(){
+        
+    }
+    public ProductEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
         this.id=id;
+        this.warehouseName=warehouseName;
+        this.location=location;
+        
     }
 }
