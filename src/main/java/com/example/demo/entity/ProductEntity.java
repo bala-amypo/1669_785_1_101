@@ -12,8 +12,9 @@ public class ProductEntity{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String warehouseName;
-    private String location;
+    private String productName;
+    private String sku;
+    private String category;
     private LocalDateTime createdAt;
 
     public Long getId(){
@@ -22,14 +23,14 @@ public class ProductEntity{
     public void setId(Long id){
         this.id=id;
     }
-    public String getWarehouseName(){
-        return warehouseName;
+    public String getProductName(){
+        return productName;
     }
-    public void setWarehouseName(String warehouseName){
-        this.warehouseName=warehouseName;
+    public void setProductName(String productName){
+        this.productName=productName;
     }
-    public String getLocation(){
-        return location;
+    public String getSku(){
+        return sku;
     }
     public void setLocation(String location){
         this.location=location;
