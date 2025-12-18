@@ -1,5 +1,4 @@
-package com.example.demo.entity;
-
+package com.example.demo.model;
 
 import jakarta.persistance.Id;
 import jakarta.persistence.Entity;
@@ -43,7 +42,7 @@ public class Warehouse{
     public Warehouse(){
         
     }
-    public Warehouse(Long id,String warehouseName,String location,LocalDateTime createdAt){
+    public Warehouse(Long id,String warehouse,String location,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
         this.location=location;

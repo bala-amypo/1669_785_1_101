@@ -44,10 +44,10 @@ public class Warehouse{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public StockEntity(){
+    public StockRecord(){
         
     }
-    public WarehouseEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
+    public StockRecord(Long id,String warehouseName,String location,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
         this.location=location;
