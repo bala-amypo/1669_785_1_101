@@ -17,7 +17,7 @@ public class StockRecord{
     @ManyToOne(optional=false)
     private Warehouse warehouse;
     @ManyToOne(optional=false)
-    private ProductEntity product;
+    private Product product;
     private Integer currentQuantity;
     private Integer reorderThreshold;
     private LocalDateTime lastUpdated;

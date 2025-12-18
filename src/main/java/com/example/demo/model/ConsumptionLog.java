@@ -47,7 +47,7 @@ public class ConsumptionLog{
     public ConsumptionLog(){
         
     }
-    public ConsumptionLog(Long id,StockRecord stockRecord,Integer consumedQuantity,LocalDateTime consumedQuantity){
+    public ConsumptionLog(Long id,StockRecord stockRecord,Integer consumedQuantity,LocalDateTime consumedDate){
         this.id=id;
         this.stockRecord=stockRecord;
         this.consumedQuantity=consumedQuantity;
