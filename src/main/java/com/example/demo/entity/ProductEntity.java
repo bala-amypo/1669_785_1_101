@@ -1,5 +1,9 @@
 package com.example.demo.entity;
 
+import java.util.L;
+import org.springframework.web.bind.annotation.Id;
+import jakarta.persistance.
+import java.time.LocalDateTime;
 @Entity
 public class ProductEntity{
     @Id
@@ -7,5 +11,5 @@ public class ProductEntity{
     Long id;
     private String warehouseName;
     private String location;
-    private LocalDate 
+    private LocalDateTime  
 }
