@@ -13,7 +13,7 @@ import com.example.demo.model.Warehouse;
 @Entity
 public class StockRecord{
     @Id
-    @GerneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional=false)
     private Warehouse warehouse;

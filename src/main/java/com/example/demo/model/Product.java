@@ -1,16 +1,16 @@
 package com.example.demo.model;
 
 
-import jakarta.persistance.Id;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
-import jakarta.persistance.GeneratedValue;
-import jakarta.persistance.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
 public class Product{
     @Id
-    @GerneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String productName;
     private String sku;

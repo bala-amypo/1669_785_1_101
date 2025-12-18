@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import com.example.demo.model.StockRecord;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,11 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-
 @Entity
 public class Warehouse{
     @Id
-    @GerneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String warehouseName;
     private String location;

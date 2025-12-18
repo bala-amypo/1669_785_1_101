@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 public class ConsumptionLog{
     @Id
-    @GerneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional=false)
     private StockRecord stockRecord;
