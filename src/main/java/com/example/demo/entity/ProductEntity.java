@@ -19,5 +19,25 @@ public class ProductEntity{
     public Long getId(){
         return id;
     }
-    public void set
+    public void setId(Long id){
+        this.id=id;
+    }
+    public String getWarehouseName(){
+        return warehouseName;
+    }
+    public void setWarehouseName(String warehouseName){
+        this.warehouseName=warehouseName;
+    }
+    public String getLocation(){
+        return location;
+    }
+    public void setLocation(String location){
+        this.location=location;
+    }
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(Long id){
+        this.id=id;
+    }
 }
