@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-public class PredictionRule{
+public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -50,10 +50,10 @@ public class PredictionRule{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public PredictionRule(){
+    public User(){
         
     }
-    public PredictionRule(Long id,String name,String email,String password,LocalDateTime createdAt){
+    public User(Long id,String name,String email,String password,LocalDateTime createdAt){
         this.id=id;
         this.name=name;
         this.email=email;
