@@ -53,18 +53,18 @@ public class Warehouse{
         this.ReorderThreshold=ReorderThreshold;
     }
     public LocalDateTime getLastUpdated(){
-        return createdAt;
+        return LastUpdated;
     }
-    public void setCreatedAt(LocalDateTime createdAt){
-        this.createdAt=createdAt;
+    public void setLastUpdated(LocalDateTime LastUpdated){
+        this.LastUpdated=LastUpdated;
     }
     public StockRecord(){
         
     }
-    public StockRecord(Long id,String warehouseName,String location,LocalDateTime createdAt){
+    public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
         this.id=id;
         this.warehouseName=warehouseName;
-        this.location=location;
+        this.currentQuantity=currentQuantity;
         this.createdAt=createdAt;
     }
 }
