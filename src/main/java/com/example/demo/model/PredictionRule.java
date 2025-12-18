@@ -27,16 +27,16 @@ public class PredictionRule{
     }
     
     public String getRuleName(){
-        return product;
+        return ruleName;
     }
-    public void setProduct(Product product){
-        this.product=product;
+    public void setRuleName(String ruleName){
+        this.ruleName=ruleName;
     }
-    public Integer getCurrentQuantity(){
-        return currentQuantity;
+    public Integer getAverageDaysWindow(){
+        return averageDaysWindow;
     }
-    public void setCurrentQuantity(Integer currentQuantity){
-        this.currentQuantity=currentQuantity;
+    public void setAverageDaysWindow(Integer averageDaysWindow){
+        this.averageDaysWindow=averageDaysWindow;
     }
     public Integer getReorderThreshold(){
         return reorderThreshold;
