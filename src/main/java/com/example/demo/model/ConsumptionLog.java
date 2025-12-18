@@ -26,39 +26,29 @@ public class ConsumptionLog{
         this.id=id;
     }
     public StockRecord getStockRecord(){
-        return warehouse;
+        return stockRecord;
     }
     public void setStockRecord(StockRecord stockRecord){
-        this.warehouse=warehouse;
+        this.stockRecord=stockRecord;
     }
-    public Product getProduct(){
-        return product;
+    
+    public Integer getConsumedQuantity(){
+        return consumedQuantity;
     }
-    public void setProduct(Product product){
-        this.product=product;
+    public void setConsumedQuantity(Integer consumedQuantity){
+        this.consumedQuantity=consumedQuantity;
     }
-    public Integer getCurrentQuantity(){
-        return currentQuantity;
+    
+    public LocalDateTime getConsumedDate(){
+        return comsumedDate;
     }
-    public void setCurrentQuantity(Integer currentQuantity){
-        this.currentQuantity=currentQuantity;
+    public void setConsumedDate(LocalDateTime consumedDate){
+        this.consumedDate=consumedDate;
     }
-    public Integer getReorderThreshold(){
-        return reorderThreshold;
-    }
-    public void setReorderThreshold(Integer reorderThreshold){
-        this.reorderThreshold=reorderThreshold;
-    }
-    public LocalDateTime getLastUpdated(){
-        return lastUpdated;
-    }
-    public void setLastUpdated(LocalDateTime lastUpdated){
-        this.lastUpdated=lastUpdated;
-    }
-    public StockRecord(){
+    public ConsumptionLog(){
         
     }
-    public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
+    public ConsumptionLog(Long id,StockRecord ,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
         this.id=id;
         this.warehouseName=warehouseName;
         this.currentQuantity=currentQuantity;
