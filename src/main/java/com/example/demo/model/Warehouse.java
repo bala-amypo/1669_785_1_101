@@ -8,13 +8,12 @@ import jakarta.persistance.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
-public class ProductEntity{
+public class Warehouse{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String productName;
-    private String sku;
-    private String category;
+    private String warehouseName;
+    private String location;
     private LocalDateTime createdAt;
 
     public Long getId(){
@@ -23,23 +22,17 @@ public class ProductEntity{
     public void setId(Long id){
         this.id=id;
     }
-    public String getProductName(){
-        return productName;
+    public String getWarehouseName(){
+        return warehouseName;
     }
-    public void setProductName(String productName){
-        this.productName=productName;
+    public void setWarehouseName(String warehouseName){
+        this.warehouseName=warehouseName;
     }
-    public String getSku(){
-        return sku;
+    public String getLocation(){
+        return location;
     }
-    public void setSku(String sku){
-        this.sku=sku;
-    }
-    public String getCategory(){
-        return category;
-    }
-    public void setCategory(String category){
-        this.category=category;
+    public void setLocation(String location){
+        this.location=location;
     }
     public LocalDateTime getCreatedAt(){
         return createdAt;
@@ -47,14 +40,13 @@ public class ProductEntity{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public ProductEntity(){
+    public Warehouse(){
         
     }
-    public ProductEntity(Long id,String warehouseName,String sku,String category,LocalDateTime createdAt){
+    public Warehouse(Long id,String warehouseName,String location,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
-        this.sku=sku;
-        this.category=category;
+        this.location=location;
         this.createdAt=createdAt;
     }
 }

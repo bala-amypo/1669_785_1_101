@@ -1,20 +1,24 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 
 import jakarta.persistance.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistance.GeneratedValue;
 import jakarta.persistance.GenerationType;
+import jakarta.persistance.ManyToOne;
 import java.time.LocalDateTime;
-
+import com.example.demo.model.Product;
 @Entity
-public class WarehouseEntity{
+public class Warehouse{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String warehouseName;
-    private String location;
-    private LocalDateTime createdAt;
+    private String warehouse;
+    @ManyToOne(optional=false)
+    private ProductEntity product;
+    private Integer currentQuality;
+    private Integer reorderThreshold;
+    private LocalDateTime lastUpdated;
 
     public Long getId(){
         return id;
@@ -22,11 +26,11 @@ public class WarehouseEntity{
     public void setId(Long id){
         this.id=id;
     }
-    public String getWarehouseName(){
-        return warehouseName;
+    public String getWarehouse(){
+        return warehouse;
     }
-    public void setWarehouseName(String warehouseName){
-        this.warehouseName=warehouseName;
+    public void setWarehouse(String warehouse){
+        this.warehouse=warehouse;
     }
     public String getLocation(){
         return location;
@@ -40,7 +44,7 @@ public class WarehouseEntity{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public WarehouseEntity(){
+    public StockEntity(){
         
     }
     public WarehouseEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
