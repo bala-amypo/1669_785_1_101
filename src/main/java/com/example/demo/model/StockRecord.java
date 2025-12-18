@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import com.example.demo.model.Product;
 import com.example.demo.model.Warehouse;
 @Entity
-public class Warehouse{
+public class StockRecord{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
