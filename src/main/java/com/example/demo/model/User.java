@@ -16,7 +16,7 @@ public class PredictionRule{
     private String name;
     private String email;
     private String password;
-    private Set<Role>
+    //Role to be created pending
     private LocalDateTime createdAt;
 
     public Long getId(){
