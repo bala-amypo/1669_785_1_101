@@ -59,11 +59,12 @@ public class PredictionRule{
     public PredictionRule(){
         
     }
-    public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
+    public PredictionRule(Long id,String ruleName,Integer averageDaysWindowInteger,Integer minDailyUsage,Integer maxDailyUsage,LocalDateTime createdAt){
         this.id=id;
-        this.warehouse=warehouse;
-        this.currentQuantity=currentQuantity;
-        this.reorderThreshold=reorderThreshold;
-        this.lastUpdated=lastUpdated;
+        this.ruleName=ruleName;
+        this.averageDaysWindow=averageDaysWindow;
+        this.minDailyUsage=minDailyUsage;
+        this.maxDailyUsage=maxDailyUsage;
+        this.createdAt=createdAt;
     }
 }
