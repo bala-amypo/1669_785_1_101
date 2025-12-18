@@ -1,12 +1,12 @@
 package com.example.demo.entity;
 
-import java.util.L;
-import org.springframework.web.bind.annotation.Id;
+
 import jakarta.persistance.Id;
+import jakarta.persistence.Entity;
 import jakarta.persistance.GeneratedValue;
 import jakarta.persistance.GenerationType;
-
 import java.time.LocalDateTime;
+
 @Entity
 public class ProductEntity{
     @Id
@@ -47,6 +47,6 @@ public class ProductEntity{
         this.id=id;
         this.warehouseName=warehouseName;
         this.location=location;
-        
+        this.createdAt=createdAt;
     }
 }
