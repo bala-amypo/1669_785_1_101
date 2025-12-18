@@ -27,33 +27,25 @@ public class PredictionRule{
     }
     
     public String getName(){
-        return ruleName;
+        return name;
     }
-    public void setRuleName(String ruleName){
-        this.ruleName=ruleName;
+    public void setName(String name){
+        this.name=name;
     }
-    public Integer getAverageDaysWindow(){
-        return averageDaysWindow;
+    public String getEmail(){
+        return email;
     }
-    public void setAverageDaysWindow(Integer averageDaysWindow){
-        this.averageDaysWindow=averageDaysWindow;
+    public void setEmail(String email){
+        this.email=email;
     }
-    public Integer getMinDailyUsage(){
-        return minDailyUsage;
+    public String getPassword(){
+        return password;
     }
-    public void setMinDailyUsage(Integer minDailyUsage){
-        this.minDailyUsage=minDailyUsage;
+    public void setPassword(String password){
+        this.password=password;
     }
-    public Integer getMaxDailyUsage(){
-        return maxDailyUsage;
-    }
-    public void setMaxDailyUsage(Integer maxDailyUsage){
-        this.maxDailyUsage=maxDailyUsage;
-    }
-    public LocalDateTime getCreatedAt(){
-        return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime lastUpdated){
+    
+    public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
     public PredictionRule(){
