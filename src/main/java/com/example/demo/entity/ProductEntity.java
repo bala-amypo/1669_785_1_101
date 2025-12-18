@@ -32,8 +32,14 @@ public class ProductEntity{
     public String getSku(){
         return sku;
     }
-    public void setLocation(String location){
-        this.location=location;
+    public void setSku(String sku){
+        this.sku=sku;
+    }
+    public String getCategory(){
+        return category;
+    }
+    public void setCategory(String category){
+        this.category=category;
     }
     public LocalDateTime getCreatedAt(){
         return createdAt;
@@ -44,10 +50,11 @@ public class ProductEntity{
     public ProductEntity(){
         
     }
-    public ProductEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
+    public ProductEntity(Long id,String warehouseName,String sku,String category,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
-        this.location=location;
+        this.sku=sku;
+        this.category=category;
         this.createdAt=createdAt;
     }
 }
