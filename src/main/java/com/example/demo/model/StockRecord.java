@@ -8,15 +8,17 @@ import jakarta.persistance.GenerationType;
 import jakarta.persistance.ManyToOne;
 import java.time.LocalDateTime;
 import com.example.demo.model.Product;
+import com.example.demo.model.Warehouse;
 @Entity
 public class Warehouse{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String warehouse;
+    @ManyToOne(optional=false)
+    private Warehouse warehouse;
     @ManyToOne(optional=false)
     private ProductEntity product;
-    private Integer currentQuality;
+    private Integer currentQuantity;
     private Integer reorderThreshold;
     private LocalDateTime lastUpdated;
 
@@ -26,10 +28,10 @@ public class Warehouse{
     public void setId(Long id){
         this.id=id;
     }
-    public String getWarehouse(){
+    public Warehouse getWarehouse(){
         return warehouse;
     }
-    public void setWarehouse(String warehouse){
+    public void setWarehouse( warehouse){
         this.warehouse=warehouse;
     }
     public String getLocation(){
