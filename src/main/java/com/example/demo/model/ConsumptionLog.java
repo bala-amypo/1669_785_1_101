@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 import jakarta.persistance.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistance.GeneratedValue;
@@ -48,11 +47,10 @@ public class ConsumptionLog{
     public ConsumptionLog(){
         
     }
-    public ConsumptionLog(Long id,StockRecord ,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
+    public ConsumptionLog(Long id,StockRecord stockRecord,Integer consumedQuantity,LocalDateTime consumedQuantity){
         this.id=id;
-        this.warehouseName=warehouseName;
-        this.currentQuantity=currentQuantity;
-        this.reorderThreshold=reorderThreshold;
-        this.lastUpdated=lastUpdated;
+        this.stockRecord=stockRecord;
+        this.consumedQuantity=consumedQuantity;
+        this.consumedDate=consumedDate;
     }
 }
