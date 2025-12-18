@@ -49,14 +49,14 @@ public class Warehouse{
     public Integer getReorderThreshold(){
         return reorderThreshold;
     }
-    public void setReorderThreshold(Integer ReorderThreshold){
-        this.ReorderThreshold=ReorderThreshold;
+    public void setReorderThreshold(Integer reorderThreshold){
+        this.reorderThreshold=reorderThreshold;
     }
     public LocalDateTime getLastUpdated(){
-        return LastUpdated;
+        return lastUpdated;
     }
-    public void setLastUpdated(LocalDateTime LastUpdated){
-        this.LastUpdated=LastUpdated;
+    public void setLastUpdated(LocalDateTime lastUpdated){
+        this.lastUpdated=lastUpdated;
     }
     public StockRecord(){
         
@@ -65,6 +65,7 @@ public class Warehouse{
         this.id=id;
         this.warehouseName=warehouseName;
         this.currentQuantity=currentQuantity;
-        this.createdAt=createdAt;
+        this.reorderThreshold=reorderThreshold;
+        this.lastUpdated=lastUpdated;
     }
 }
