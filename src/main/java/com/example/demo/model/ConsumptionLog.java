@@ -10,16 +10,14 @@ import java.time.LocalDateTime;
 import com.example.demo.model.StockRecord;
 
 @Entity
-public class Warehouse{
+public class ConsumptionLog{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional=false)
-    private StockRecord stockr;
-   
-    private Integer currentQuantity;
-    private Integer reorderThreshold;
-    private LocalDateTime lastUpdated;
+    private StockRecord stockRecord;
+    private Integer consumedQuantity;
+    private LocalDateTime consumedDate;
 
     public Long getId(){
         return id;
@@ -27,10 +25,10 @@ public class Warehouse{
     public void setId(Long id){
         this.id=id;
     }
-    public Warehouse getWarehouse(){
+    public StockRecord getStockRecord(){
         return warehouse;
     }
-    public void setWarehouse(Warehouse warehouse){
+    public void setStockRecord(StockRecord stockRecord){
         this.warehouse=warehouse;
     }
     public Product getProduct(){
