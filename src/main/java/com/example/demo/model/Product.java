@@ -1,5 +1,4 @@
-package com.example.demo.model
-;
+package com.example.demo.model;
 
 
 import jakarta.persistance.Id;
@@ -9,7 +8,7 @@ import jakarta.persistance.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
-public class ProductEntity{
+public class Product{
     @Id
     @GerneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -48,12 +47,12 @@ public class ProductEntity{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public ProductEntity(){
+    public Product(){
         
     }
-    public ProductEntity(Long id,String warehouseName,String sku,String category,LocalDateTime createdAt){
+    public Product(Long id,String productName,String sku,String category,LocalDateTime createdAt){
         this.id=id;
-        this.warehouseName=warehouseName;
+        this.productName=productName;
         this.sku=sku;
         this.category=category;
         this.createdAt=createdAt;
