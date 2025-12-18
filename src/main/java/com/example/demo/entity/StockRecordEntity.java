@@ -7,7 +7,7 @@ import jakarta.persistance.GeneratedValue;
 import jakarta.persistance.GenerationType;
 import jakarta.persistance.ManyToOne;
 import java.time.LocalDateTime;
-
+import com.example.demo.entity.ProductEntity;
 @Entity
 public class WarehouseEntity{
     @Id
@@ -15,7 +15,7 @@ public class WarehouseEntity{
     private Long id;
     private String warehouse;
     @ManyToOne(optional=false)
-    private Product product;
+    private ProductEntity product;
     private Integer currentQuality;
     private Integer reorderThreshold;
     private LocalDateTime lastUpdated;
@@ -26,11 +26,11 @@ public class WarehouseEntity{
     public void setId(Long id){
         this.id=id;
     }
-    public String getWarehouseName(){
-        return warehouseName;
+    public String getWarehouse(){
+        return warehouse;
     }
-    public void setWarehouseName(String warehouseName){
-        this.warehouseName=warehouseName;
+    public void setWarehouse(String warehouse){
+        this.warehouse=warehouse;
     }
     public String getLocation(){
         return location;
@@ -44,7 +44,7 @@ public class WarehouseEntity{
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-    public WarehouseEntity(){
+    public StockEntity(){
         
     }
     public WarehouseEntity(Long id,String warehouseName,String location,LocalDateTime createdAt){
