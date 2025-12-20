@@ -60,9 +60,9 @@ public class User {
         name = "user_roles",
         joinColumns = @JoinColumn(name = "user_id")
     )
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
-    private Set<Role> roles;
+    // @Enumerated(EnumType.STRING)
+    // @Column(name = "role", nullable = false)
+    // private Set<Role> roles;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
