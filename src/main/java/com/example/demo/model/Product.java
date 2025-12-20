@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
-
+import 
 @Entity
 public class Product{
     @Id
@@ -13,6 +13,7 @@ public class Product{
     private Long id;
     @NotNull
     private String productName;
+    @
     private String sku;
     private String category;
     private LocalDateTime createdAt;
