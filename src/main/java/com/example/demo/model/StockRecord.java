@@ -1,72 +1,51 @@
-package com.example.demo.model;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-import com.example.demo.model.Product;
-import com.example.demo.model.Warehouse;
 @Entity
-public class StockRecord{
+@Table(
+    name = "stock_record",
+    uniqueConstraints = @UniqueConstraint(
+        columnNames = {"product_id", "warehouse_id"}
+    )
+)
+@Data                   
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class StockRecord {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(optional=false)
-    private Warehouse warehouse;
-    @ManyToOne(optional=false)
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    private Warehouse warehouse;
+
+    @Min(0)
+    @Column(nullable = false)
     private Integer currentQuantity;
+
+    @Min(1)
+    @Column(nullable = false)
     private Integer reorderThreshold;
+
+    @Column(nullable = false)
     private LocalDateTime lastUpdated;
 
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-    public Warehouse getWarehouse(){
-        return warehouse;
-    }
-    public void setWarehouse(Warehouse warehouse){
-        this.warehouse=warehouse;
-    }
-    public Product getProduct(){
-        return product;
-    }
-    public void setProduct(Product product){
-        this.product=product;
-    }
-    public Integer getCurrentQuantity(){
-        return currentQuantity;
-    }
-    public void setCurrentQuantity(Integer currentQuantity){
-        this.currentQuantity=currentQuantity;
-    }
-    public Integer getReorderThreshold(){
-        return reorderThreshold;
-    }
-    public void setReorderThreshold(Integer reorderThreshold){
-        this.reorderThreshold=reorderThreshold;
-    }
-    public LocalDateTime getLastUpdated(){
-        return lastUpdated;
-    }
-    public void setLastUpdated(LocalDateTime lastUpdated){
-        this.lastUpdated=lastUpdated;
-    }
-    public StockRecord(){
-        
-    }
-    public StockRecord(Long id,Warehouse warehouse,Product product,Integer currentQuantity,Integer reorderThreshold,LocalDateTime lastUpdated){
-        this.id=id;
-        this.warehouse=warehouse;
-        this.currentQuantity=currentQuantity;
-        this.reorderThreshold=reorderThreshold;
-        this.lastUpdated=lastUpdated;
+    @PrePersist
+    @PreUpdate
+    private void onUpdate() {
+        this.lastUpdated = LocalDateTime.now();
     }
 }
