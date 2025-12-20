@@ -29,6 +29,7 @@ public class Warehouse{
     private LocalDateTime createdAt;
     @PrePersist
     public void onCreate(){
-        LocalDateTime 
+        LocalDateTime now=LocalDateTime.now();
+        this.createdAt=now;
     }
 }
