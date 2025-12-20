@@ -7,16 +7,16 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService{
     @Autowired ProductService serve;
-    @PostMapping("/api/products/post")
-    Product createProduct(Product product){
-        return pro.save(product);
+    @PostMapping("/api/products/POST")
+    Product createproduct(Product product){
+        return serve.createProduct(product);
     }
-    @Override
-    Product getProduct(Long id){
-        return pro.findById(id);
+    @GetMapping("/api/products/GET")
+    Product getproduct(Long id){
+        return serve.getProduct(id);
     }
-    @Override
-    List<Product> getAllProducts(){
-        return pro.findAll();
+    @GetMapping("/api/products/GET")
+    List<Product> listAllProducts(){
+        return serve.getAllProducts();
     }
 }
