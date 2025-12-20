@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.example.demo.service.Service;
+import com.example.demo.service.PredictionService;
 import com.example.demo.model.PredictionRule;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.Record;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-
 
 @RestController
 @RequestMapping("/api/predict")
