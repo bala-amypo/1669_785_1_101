@@ -1,0 +1,18 @@
+package com.example.demo.service.impl;
+
+import com.example.demo.model.Product;
+import com.example.demo.service.ProductService;
+import com.example.demo.repository.ProductRepository;
+import java.util.List;
+@Service
+public class ProductServiceImpl implements ProductService{
+    @Autowired ProductRepository pro;
+    @Override
+    Product createProduct(Product product){
+        return pro.save(product);
+    }
+    Product getProduct(Long id){
+
+    }
+    List<Product> getAllProducts();
+}
