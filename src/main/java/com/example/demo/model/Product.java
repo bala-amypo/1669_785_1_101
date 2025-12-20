@@ -24,7 +24,7 @@ public class Product{
     private Long id;
     @NotEmpty
     private String productName;
-    @Column(name='sku',unique=true)
+    @Column(name="sku",unique=true)
     private String sku;
     private String category;
     private LocalDateTime createdAt;
