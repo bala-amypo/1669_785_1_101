@@ -10,13 +10,19 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
-@
+@Data
+@AllArgsContructor
+@NoArgsContructor
 public class Product{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotEmpty
     private String productName;
     @Column(name='sku',unique=true)
     private String sku;
