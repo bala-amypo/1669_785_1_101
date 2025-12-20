@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.example.demo.service.WarehouseService;
-import com.example.demo.model.Warehouse;
+import com.example.demo.service.ConsumptionLog;
+import com.example.demo.model.ConsumptionLog;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.example.demo.service.WarehouseService;
-import com.example.demo.model.Warehouse;
+import com.example.demo.service.StockRecordService;
+import com.example.demo.model.StockRecord;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +33,7 @@ this.stockRecordService = stockRecordService;
 public StockRecord create(@PathVariable Long productId,
 @PathVariable Long warehouseId,
 @RequestBody StockRecord record) {
-return stockRecordService.createStock @Record(productId, warehouseId, record);
+return stockRecordService.createStockRecord(productId, warehouseId, record);
 }
 
 
