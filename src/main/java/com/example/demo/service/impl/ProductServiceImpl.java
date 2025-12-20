@@ -10,15 +10,15 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
     @Autowired ProductRepository pro;
     @Override
-    Product createProduct(Product product){
+    public Product createProduct(Product product){
         return pro.save(product);
     }
     @Override
-    Product getProduct(Long id){
-        return pro.findById(id);
+    public Product getProduct(Long id){
+        return pro.findById(id).orElseThrow(()->ResourceNotFoundException("Product Not Found"));
     }
     @Override
-    List<Product> getAllProducts(){
+    public List<Product> getAllProducts(){
         return pro.findAll();
     }
 }
