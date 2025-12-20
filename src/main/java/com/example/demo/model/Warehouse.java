@@ -22,7 +22,7 @@ public class Warehouse{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column(name='warehouseName',unique=true)
+    @Column(name="warehouseName",unique=true)
     private String warehouseName;
     @NotEmpty
     private String location;
