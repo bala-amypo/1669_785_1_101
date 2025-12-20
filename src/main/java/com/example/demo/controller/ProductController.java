@@ -16,7 +16,7 @@ public class ProductController{
     Product createproduct(@RequestBody Product product){
         return serve.createProduct(product);
     }
-    @GetMapping("/api/products/GET")
+    @GetMapping("/api/products/GET/{id}")
     Product getproduct(@PathVariable Long id){
         return serve.getProduct(id);
     }
