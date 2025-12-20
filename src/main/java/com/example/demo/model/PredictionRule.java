@@ -1,3 +1,5 @@
+package com.example.demo.model;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Min;
