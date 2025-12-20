@@ -1,4 +1,5 @@
 package com.example.demo.model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -29,7 +30,8 @@ import java.time.LocalDateTime;
         columnNames = {"product_id", "warehouse_id"}
     )
 )
-@Data                   
+@Getter          
+@Setter          
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
