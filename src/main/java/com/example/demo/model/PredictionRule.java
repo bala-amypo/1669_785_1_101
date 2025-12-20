@@ -1,70 +1,54 @@
-package com.example.demo.model;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
-
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-public class PredictionRule{
+@Table(
+    name = "prediction_rule",
+    uniqueConstraints = @UniqueConstraint(columnNames = "rule_name")
+)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class PredictionRule {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Column(name = "rule_name", nullable = false, unique = true)
     private String ruleName;
+
+    @Min(1)
+    @Column(nullable = false)
     private Integer averageDaysWindow;
+
+    @Min(0)
+    @Column(nullable = false)
     private Integer minDailyUsage;
+
+    @Min(0)
+    @Column(nullable = false)
     private Integer maxDailyUsage;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    public Long getId(){
-        return id;
+    @PrePersist
+    private void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
-    public void setId(Long id){
-        this.id=id;
-    }
-    
-    public String getRuleName(){
-        return ruleName;
-    }
-    public void setRuleName(String ruleName){
-        this.ruleName=ruleName;
-    }
-    public Integer getAverageDaysWindow(){
-        return averageDaysWindow;
-    }
-    public void setAverageDaysWindow(Integer averageDaysWindow){
-        this.averageDaysWindow=averageDaysWindow;
-    }
-    public Integer getMinDailyUsage(){
-        return minDailyUsage;
-    }
-    public void setMinDailyUsage(Integer minDailyUsage){
-        this.minDailyUsage=minDailyUsage;
-    }
-    public Integer getMaxDailyUsage(){
-        return maxDailyUsage;
-    }
-    public void setMaxDailyUsage(Integer maxDailyUsage){
-        this.maxDailyUsage=maxDailyUsage;
-    }
-    public LocalDateTime getCreatedAt(){
-        return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime createdAt){
-        this.createdAt=createdAt;
-    }
-    public PredictionRule(){
-        
-    }
-    public PredictionRule(Long id,String ruleName,Integer averageDaysWindowInteger,Integer minDailyUsage,Integer maxDailyUsage,LocalDateTime createdAt){
-        this.id=id;
-        this.ruleName=ruleName;
-        this.averageDaysWindow=averageDaysWindow;
-        this.minDailyUsage=minDailyUsage;
-        this.maxDailyUsage=maxDailyUsage;
-        this.createdAt=createdAt;
+
+    @AssertTrue(message = "minDailyUsage must be <= maxDailyUsage")
+    private boolean isUsageRangeValid() {
+        return minDailyUsage == null || maxDailyUsage == null
+                || minDailyUsage <= maxDailyUsage;
     }
 }
