@@ -13,11 +13,10 @@ public class ProductServiceImpl implements ProductService{
     }
     @Override
     Product getProduct(Long id){
-        int di=pro.findById()
-        return ;
+        return pro.findById(id);
     }
     @Override
     List<Product> getAllProducts(){
-        return pro;
+        return pro.findAll();
     }
 }
