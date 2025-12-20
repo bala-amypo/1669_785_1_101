@@ -1,35 +1,38 @@
-package com.example.demo.model;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Column;
 import java.time.LocalDateTime;
-import lombok.Data;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Entity
-@Data
+@Table(
+    name = "warehouse",
+    uniqueConstraints = @UniqueConstraint(columnNames = "warehouse_name")
+)
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Warehouse{
+public class Warehouse {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="warehouseName",unique=true)
+
+    @NotBlank
+    @Column(name = "warehouse_name", nullable = false, unique = true)
     private String warehouseName;
-    @NotEmpty
+
+    @NotBlank
+    @Column(nullable = false)
     private String location;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
     @PrePersist
-    public void onCreate(){
-        LocalDateTime now=LocalDateTime.now();
-        this.createdAt=now;
+    private void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 }
