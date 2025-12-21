@@ -1,14 +1,27 @@
 package com.example.demo.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-@RestControllerAdvice
-public class GlobalExceptionHandler{
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public Response<String> handleValidationException(ResourceNotFoundException ex){
-        return new ResponseEntity<String>(ex.getMessage(),HttpStatus.BAD_GATEWAY);
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(
+            ResourceNotFoundException ex) {
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.NOT_FOUND.value());
+        response.put("error", "Not Found");
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }
