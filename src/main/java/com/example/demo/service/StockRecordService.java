@@ -8,3 +8,4 @@ StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord reco
 StockRecord getStockRecord(Long id);
 List<StockRecord> getRecordsBy_product(Long productId);
 List<StockRecord> getRecordsByWarehouse(Long warehouseId);
+}
