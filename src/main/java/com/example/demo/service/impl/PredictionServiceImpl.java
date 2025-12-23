@@ -25,7 +25,7 @@ public class PredictionServiceImpl implements PredictionService {
         stockRecordRepository.findById(stockRecordId)
                 .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found"));
 
-        return LocalDate.now().plusDays(7); // minimal safe logic
+        return LocalDate.now().plusDays(7); 
     }
 
     @Override
