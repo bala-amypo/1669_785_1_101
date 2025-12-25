@@ -38,8 +38,9 @@ public AuthResponse login(AuthRequest request) {
     if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
         throw new IllegalArgumentException("Invalid email or password");
     }
-
-    return new AuthResponse("dummy-jwt-token");
+    AuthResponse response = new AuthResponse();
+response.setToken("");
+return response;
 }
 
     @Override
