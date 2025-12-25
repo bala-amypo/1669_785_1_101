@@ -24,7 +24,7 @@ public class AuthController {
 public ResponseEntity<String> register(
         @Valid @RequestBody UserRegisterDto request) {
 
-    authService.register(request);
+    userService.register(request);
     return ResponseEntity.ok("User registered successfully");
 }
 
