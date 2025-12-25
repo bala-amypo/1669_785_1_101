@@ -78,7 +78,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    // 🔹 500 – Any unhandled exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGlobalException(Exception ex) {
 
@@ -89,7 +88,7 @@ public class GlobalExceptionHandler {
         );
     }
 
-    // 🔹 Helper method for consistent response
+  
     private ResponseEntity<Map<String, Object>> buildResponse(
             HttpStatus status, String error, String message) {
 
