@@ -39,7 +39,7 @@ public AuthResponse login(AuthRequest request) {
         throw new IllegalArgumentException("Invalid email or password");
     }
     AuthResponse response = new AuthResponse();
-response.setToken(""dummy-jwt-token"");
+response.setToken("dummy-jwt-token");
 return response;
 }
 
