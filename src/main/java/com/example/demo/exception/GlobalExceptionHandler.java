@@ -40,7 +40,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 🔹 404 – Resource not found
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(
             ResourceNotFoundException ex) {
@@ -51,8 +50,6 @@ public class GlobalExceptionHandler {
                 ex.getMessage()
         );
     }
-
-    // 🔹 409 – Duplicate / business rule violation
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
             IllegalArgumentException ex) {
@@ -64,7 +61,6 @@ public class GlobalExceptionHandler {
         );
     }
 
-    // 🔹 400 – Validation errors (@Valid)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationException(
             MethodArgumentNotValidException ex) {
