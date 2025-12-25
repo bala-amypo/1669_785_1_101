@@ -10,19 +10,26 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
 @RestController
-// @RequestMapping("/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/auth/register")
-    public User register(@RequestBody UserRegisterDto dto) {
-        return userService.register(dto);
-    }
+    @PostMapping("/register")
+    // public User register(@RequestBody UserRegisterDto dto) {
+    //     return userService.register(dto);
+    // }
+public ResponseEntity<String> register(
+        @Valid @RequestBody UserRegisterDto request) {
 
-    @PostMapping("/auth/login")
+    authService.register(request);
+    return ResponseEntity.ok("User registered successfully");
+}
+
+    @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         return userService.login(request);
     }
+   
 }
