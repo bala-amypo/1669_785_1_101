@@ -28,20 +28,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-//     @Override
-// public AuthResponse login(AuthRequest request) {
+    @Override
+public AuthResponse login(AuthRequest request) {
 
-//     User user = userRepository.findByEmail(request.getEmail())
-//             .orElseThrow(() ->
-//                 new IllegalArgumentException("Invalid email or password"));
+    User user = userRepository.findByEmail(request.getEmail())
+            .orElseThrow(() ->
+                new IllegalArgumentException("Invalid email or password"));
 
-//     if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-//         throw new IllegalArgumentException("Invalid email or password");
-//     }
-//     AuthResponse response = new AuthResponse();
-// response.setToken("dummy-jwt-token");
-// return response;
-// }
+    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        throw new IllegalArgumentException("Invalid email or password");
+    }
+    AuthResponse response = new AuthResponse();
+response.setToken(token);
+return response;
+}
 
     @Override
     public User getByEmail(String email) {
