@@ -31,7 +31,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,21 +46,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(
             ResourceNotFoundException ex) {
 
-        return buildResponse(
-                HttpStatus.NOT_FOUND,
-                "Not Found",
-                ex.getMessage()
-        );
+        return buildResponse(HttpStatus.NOT_FOUND, "Not Found", ex.getMessage());
     }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
             IllegalArgumentException ex) {
 
-        return buildResponse(
-                HttpStatus.CONFLICT,
-                "Conflict",
-                ex.getMessage()
-        );
+        return buildResponse(HttpStatus.CONFLICT, "Conflict", ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -75,7 +70,7 @@ public class GlobalExceptionHandler {
         response.put("error", "Validation Failed");
         response.put("messages", errors);
 
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return jsonResponse(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
@@ -88,7 +83,6 @@ public class GlobalExceptionHandler {
         );
     }
 
-  
     private ResponseEntity<Map<String, Object>> buildResponse(
             HttpStatus status, String error, String message) {
 
@@ -98,7 +92,15 @@ public class GlobalExceptionHandler {
         response.put("error", error);
         response.put("message", message);
 
-        return new ResponseEntity<>(response, status);
+        return jsonResponse(response, status);
+    }
+
+    private ResponseEntity<Map<String, Object>> jsonResponse(
+            Map<String, Object> body, HttpStatus status) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        return new ResponseEntity<>(body, headers, status);
     }
 }
-
