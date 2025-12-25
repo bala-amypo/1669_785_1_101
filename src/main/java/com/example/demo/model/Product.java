@@ -34,11 +34,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    
+    @NotBlank(message = "Product name is required")
     @Column(nullable = false)
     private String productName;
 
-    @NotBlank
+    @NotBlank(message = "SKU is required")
     @Column(nullable = false, unique = true)
     private String sku;
 
