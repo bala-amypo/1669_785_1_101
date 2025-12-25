@@ -83,6 +83,7 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(Exception.class)
     private ResponseEntity<Map<String, Object>> buildResponse(
             HttpStatus status, String error, String message) {
 
@@ -94,7 +95,7 @@ public class GlobalExceptionHandler {
 
         return jsonResponse(response, status);
     }
-
+    @ExceptionHandler(Exception.class)
     private ResponseEntity<Map<String, Object>> jsonResponse(
             Map<String, Object> body, HttpStatus status) {
 
