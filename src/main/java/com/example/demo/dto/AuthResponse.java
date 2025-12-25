@@ -7,8 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor   // 🔴 THIS FIXES THE ERROR
+  
 @NoArgsConstructor
 public class AuthResponse {
     private String token;
+    public AuthR
 }
