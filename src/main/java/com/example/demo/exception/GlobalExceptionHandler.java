@@ -41,7 +41,7 @@ public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
         IllegalArgumentException ex) {
 
     return buildResponse(
-            HttpStatus.UNAUTHORIZED,   // 🔴 IMPORTANT
+            HttpStatus.UNAUTHORIZED,   
             "Unauthorized",
             ex.getMessage()
     );
