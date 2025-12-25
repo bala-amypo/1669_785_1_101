@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class StockRecordController {
 
 
-private final StockRecordService stockRecordService;
+@Autowired private StockRecordService stockRecordService;
 
 
-public StockRecordController(StockRecordService stockRecordService) {
-this.stockRecordService = stockRecordService;
-}
+// public StockRecordController(StockRecordService stockRecordService) {
+// this.stockRecordService = stockRecordService;
+// }
 
 
 @PostMapping("/{productId}/{warehouseId}")
