@@ -24,7 +24,7 @@ this.productService = productService;
 }
 
 @PostMapping
-public Product create(@RequestBody Product product) {
+public Product createValidProduct(@RequestBody Product product) {
 return productService.createProduct(product);
 }
 
