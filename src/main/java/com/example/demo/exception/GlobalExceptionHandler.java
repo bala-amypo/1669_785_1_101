@@ -41,7 +41,7 @@ public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
         IllegalArgumentException ex) {
 
     return buildResponse(
-            HttpStatus.UNAUTHORIZED,   
+            HttpStatus.BAD_REQUEST,   
             "Unauthorized",
             ex.getMessage()
     );
@@ -66,12 +66,11 @@ public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    // 🔹 500 – Any unhandled exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGlobalException(Exception ex) {
 
         return buildResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR,
+                HttpStatus.BAD_REQUEST,
                 "Internal Server Error",
                 "Something went wrong"
         );
