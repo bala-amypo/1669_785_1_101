@@ -26,7 +26,7 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
         try {
             AuthResponse response = userService.login(request);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.badRequest().build(); 
         } catch (RuntimeException ex) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
