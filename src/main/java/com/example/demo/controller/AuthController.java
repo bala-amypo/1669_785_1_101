@@ -29,7 +29,7 @@ public class AuthController {
             return ResponseEntity.ok(response);
         } catch (RuntimeException ex) {
             return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
+                    .status(HttpStatus.BAD_REQUEST)
                     .body("Invalid username or password");
         }
     }
