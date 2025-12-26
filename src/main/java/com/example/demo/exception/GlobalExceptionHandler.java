@@ -36,16 +36,12 @@ public class GlobalExceptionHandler {
                 ex.getMessage()
         );
     }
-    @ExceptionHandler(IllegalArgumentException.class)
-public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
+ @ExceptionHandler(IllegalArgumentException.class)
+public ResponseEntity<String> handleIllegalArgumentException(
         IllegalArgumentException ex) {
-
-    return buildResponse(
-            HttpStatus.UNAUTHORIZED,   
-            "Unauthorized",
-            ex.getMessage()
-    );
+    return ResponseEntity.badRequest().body(ex.getMessage());
 }
+
 
 
     // 🔹 400 – Validation errors (@Valid)
