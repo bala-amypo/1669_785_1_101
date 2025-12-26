@@ -28,10 +28,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public AuthResponse login(AuthRequest request) {
-        return new AuthResponse("dummy-jwt-token");
-    }
+    @PostMapping("/login")
+public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+    boolean ok = authService.authenticate(request.getEmail(), request.getPassword());
+    if (!ok) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }mvn -Dtest=InventoryApplicationTests#t52_loginInvalid test
+    String token = authService.generateToken(...);
+    return ResponseEntity.ok(new AuthResponse(token));
+}
+
 
     @Override
     public User getByEmail(String email) {
