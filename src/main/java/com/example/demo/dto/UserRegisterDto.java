@@ -1,12 +1,9 @@
 package com.example.demo.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-
+@Data
 public class UserRegisterDto{
     @NotBlank(message = "Username is required")
     private String username;
@@ -17,12 +14,5 @@ public class UserRegisterDto{
     @NotNull(message = "Role is required")
     private String role; 
 
-
-    public String getEmail(){
-        return null;
-    }
-    public String getPassword(){
-        return null;
-    }
 }
 

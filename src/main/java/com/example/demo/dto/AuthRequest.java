@@ -2,11 +2,8 @@ package com.example.demo.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+import lombok.Data;
+@Data
 public class AuthRequest {
 
     @Email(message = "Invalid email")
