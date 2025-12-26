@@ -48,7 +48,6 @@ public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
 }
 
 
-    // 🔹 400 – Validation errors (@Valid)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationException(
             MethodArgumentNotValidException ex) {
