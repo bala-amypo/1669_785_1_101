@@ -26,17 +26,28 @@ public class GlobalExceptionHandler {
     }
 
     // 🔹 409 – Duplicate / business rule violation
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
-            IllegalArgumentException ex) {
+    // @ExceptionHandler(IllegalArgumentException.class)
+    // public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
+    //         IllegalArgumentException ex) {
 
-        return buildResponse(
-                HttpStatus.CONFLICT,
-                "Conflict",
-                ex.getMessage()
-        );
-    }
-    
+    //     return buildResponse(
+    //             HttpStatus.CONFLICT,
+    //             "Conflict",
+    //             ex.getMessage()
+    //     );
+    // }
+    @ExceptionHandler(IllegalArgumentException.class)
+public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(
+        IllegalArgumentException ex) {
+
+    return buildResponse(
+            HttpStatus.UNAUTHORIZED,   
+            "Unauthorized",
+            ex.getMessage()
+    );
+}
+
+
     // 🔹 400 – Validation errors (@Valid)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationException(
