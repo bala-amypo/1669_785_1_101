@@ -19,18 +19,18 @@ public class AuthController {
     @PostMapping("/auth/register")
     public ResponseEntity<User> register(@RequestBody UserRegisterDto dto) {
         User user = userService.register(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        return ResponseEntity.ok(user); 
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest request) {
+    public ResponseEntity<User> login(@RequestBody AuthRequest request) {
         try {
             AuthResponse response = userService.login(request);
-            return ResponseEntity.ok(response);
-        } catch (RuntimeException ex) {
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .body("Invalid username or password");
+            return ResponseEntity.ok(response); 
+        } catch (Exception e) {
+            
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 }
+
