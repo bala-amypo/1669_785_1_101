@@ -33,7 +33,7 @@ public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
     boolean ok = authService.authenticate(request.getEmail(), request.getPassword());
     if (!ok) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }mvn -Dtest=InventoryApplicationTests#t52_loginInvalid test
+    }
     String token = authService.generateToken(...);
     return ResponseEntity.ok(new AuthResponse(token));
 }
