@@ -63,3 +63,4 @@ public class StockRecordServiceImpl implements StockRecordService {
         return stockRecordRepository.findByWarehouseId(warehouseId);
     }
 }
+
