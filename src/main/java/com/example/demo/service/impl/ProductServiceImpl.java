@@ -11,9 +11,18 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
     @Autowired ProductRepository pro;
     @Override
-    public Product createProduct(Product product){
-        return pro.save(product);
+public Product createProduct(Product product) {
+
+    if (product.getProductName() == null || product.getProductName().trim().isEmpty()) {
+        throw new IllegalArgumentException("Product name cannot be empty");
     }
+
+    if (product.getSku() == null || product.getSku().trim().isEmpty()) {
+        throw new IllegalArgumentException("SKU cannot be empty");
+    }
+
+    return pro.save(product);
+}
     @Override
     public Product getProduct(Long id){
         return pro.findById(id).orElseThrow(()->new ResourceNotFoundException("Product Not Found"));
