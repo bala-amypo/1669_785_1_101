@@ -32,7 +32,7 @@ public class SecurityConfig {
         res.setContentType("application/json");
         res.getWriter().write("{\"error\":\"Unauthorized\"}");
     })
-)
+);
 
 
         return http.build();
