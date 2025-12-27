@@ -27,11 +27,13 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(
-                    (request, response, authException) ->
-                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
-                )
-            );
+    .authenticationEntryPoint((req, res, e) -> {
+        res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        res.setContentType("application/json");
+        res.getWriter().write("{\"error\":\"Unauthorized\"}");
+    })
+)
+
 
         return http.build();
     }
