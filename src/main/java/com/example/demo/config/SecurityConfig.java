@@ -12,29 +12,25 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Bean
+@Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
             .csrf(csrf -> csrf.disable())
-            .formLogin(form -> form.disable())
-            .httpBasic(basic -> basic.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/register", "/auth/login").permitAll()
                 .anyRequest().authenticated()
             )
-            .exceptionHandling(ex -> ex
-    .authenticationEntryPoint((req, res, e) -> {
-        res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        res.setContentType("application/json");
-        res.getWriter().write("{\"error\":\"Unauthorized\"}");
-    })
-);
-
+            .formLogin(form -> form
+                .loginPage("/login")   // 👈 login page URL
+                .permitAll()
+            )
+            .logout(logout -> logout.permitAll());
 
         return http.build();
     }
-}
+    }
