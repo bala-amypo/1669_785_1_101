@@ -17,20 +17,47 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
             .csrf(csrf -> csrf.disable())
-            .formLogin(form -> form.disable())
-            .httpBasic(basic -> basic.disable())
+
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll()
+
+                // 🔓 Auth & Swagger
+                .requestMatchers(
+                    "/auth/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**"
+                ).permitAll()
+
+                // 🔓 Products
+                .requestMatchers(HttpMethod.POST, "/products").permitAll()
+                .requestMatchers(HttpMethod.GET, "/products").permitAll()
+
+                // 🔓 Warranties
+                .requestMatchers(HttpMethod.POST, "/warranties/register/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/warranties/**").permitAll()
+
+                // 🔓 Alert Logs
+                .requestMatchers(HttpMethod.POST, "/logs/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/logs/**").permitAll()
+
+                // 🔓 Alert Schedules
+                .requestMatchers(HttpMethod.POST, "/schedules/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/schedules/**").permitAll()
+
+                // 🔒 Everything else
                 .anyRequest().authenticated()
             )
-            .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(
-                    (request, response, authException) ->
-                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
-                )
+
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+            )
+
+            .addFilterBefore(
+                jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter.class
             );
 
         return http.build();
