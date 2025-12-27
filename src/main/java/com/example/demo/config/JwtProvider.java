@@ -73,7 +73,8 @@ public String getEmailFromToken(String token) {
 
     public Long getUserId(String token) {
         Object id = extractAllClaims(token).get("userId");
-        return id == null ? 1L : Long.valueOf(id.toString());
+        return id == null ? null : Long.valueOf(id.toString());
+
     }
 
     private boolean isTokenExpired(String token) {
