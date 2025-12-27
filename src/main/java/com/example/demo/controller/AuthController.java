@@ -1,36 +1,26 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import com.example.demo.dto.AuthRequest;
-import com.example.demo.dto.AuthResponse;
-import com.example.demo.dto.UserRegisterDto;
-import com.example.demo.model.User;
+import com.example.demo.dto.*;
 import com.example.demo.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @PostMapping("/auth/register")
-    public ResponseEntity<User> register(@RequestBody UserRegisterDto dto) {
-        User user = userService.register(dto);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+    public AuthController(UserService userService) {
+        this.userService = userService;
     }
 
-    @PostMapping("/auth/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest request) {
-        try {
-            AuthResponse response = userService.login(request);
-            return ResponseEntity.badRequest().build(); 
-        } catch (RuntimeException ex) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body("Invalid username or password");
-        }
+    @PostMapping("/register")
+    public Object register(@RequestBody UserRegisterDto dto) {
+        return userService.register(dto);
+    }
+
+    @PostMapping("/login")
+    public AuthResponse login(@RequestBody AuthRequest request) {
+        return userService.login(request);
     }
 }
