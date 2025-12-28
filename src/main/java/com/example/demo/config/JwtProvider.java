@@ -24,7 +24,7 @@ public class JwtProvider {
     @Value("${jwt.expiration.ms:86400000}") // 24 hours default
     private long jwtExpirationMs;
     
-    @Value("${jwt.issuer:your-app-name}")
+    @Value("${jwt.issuer:demo}")
     private String jwtIssuer;
     
     private SecretKey getSigningKey() {
