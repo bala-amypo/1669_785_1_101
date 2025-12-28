@@ -18,10 +18,10 @@ import java.util.stream.Collectors;
 public class JwtProvider {
 
     // These should be in application.properties/application.yml
-    @Value("${jwt.secret:yourSuperSecretKeyThatIsAtLeast32BytesLongForHS256Algorithm}")
+    @Value("${jwt.secret:YourSuperSecretKeyHere12345678iuytrewlkjhgfdswa987ytr}")
     private String jwtSecret;
     
-    @Value("${jwt.expiration.ms:86400000}") // 24 hours default
+    @Value("${jwt.expiration:86400000}") // 24 hours default
     private long jwtExpirationMs;
     
     @Value("${jwt.issuer:demo}")
