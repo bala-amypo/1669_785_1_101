@@ -75,3 +75,4 @@ public String getEmailFromToken(String token) {
         Object id = extractAllClaims(token).get("userId");
         return id == null ? 1L : Long.valueOf(id.toString());
     }
+}
