@@ -8,7 +8,6 @@ import java.util.Set;
 public class JwtProvider {
 
     public String generateToken(String email, long userId, Set<String> roles) {
-        // Dummy token for test compatibility
         return "test-jwt-token";
     }
 
