@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-
+import lombok.*;
 import java.util.List;
 
 @RestController
+@Slf4j 
 @RequestMapping("/api/stocks")
 @SecurityRequirement(name="bearerAuth")
 public class StockRecordController {
@@ -55,7 +56,7 @@ return warehouseService.getWarehouse(warehouseId);
    
 public ResponseEntity<StockRecord> getStockById(@PathVariable Long id) {
     try {
-        StockRecord stock = stockService.findById(id);
+        StockRecord stock = stockRecordService.findById(id);
         if (stock == null) {
             return ResponseEntity.notFound().build(); // Should return 404, not 500
         }
