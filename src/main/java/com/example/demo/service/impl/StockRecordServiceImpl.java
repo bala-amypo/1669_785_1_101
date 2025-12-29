@@ -1,32 +1,41 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.StockRecord;
-import com.example.demo.model.Product;
-import com.example.demo.model.Warehouse;
 import com.example.demo.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.example.demo.service.StockRecordService;
-import com.example.demo.repository.WarehouseRepository;
-import com.example.demo.repository.StockRecordRepository;
+import com.example.demo.model.Product;
+import com.example.demo.model.StockRecord;
+import com.example.demo.model.Warehouse;
 import com.example.demo.repository.ProductRepository;
-import java.util.List;
-import java.time.LocalDate;
+import com.example.demo.repository.StockRecordRepository;
+import com.example.demo.repository.WarehouseRepository;
+import com.example.demo.service.StockRecordService;
+import org.springframework.stereotype.Service;
 
-@Service
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service("stockRecordServiceImpl")
 public class StockRecordServiceImpl implements StockRecordService {
 
-    @Autowired
-    private StockRecordRepository stockRecordRepository;
+    private final StockRecordRepository stockRecordRepository;
+    private final ProductRepository productRepository;
+    private final WarehouseRepository warehouseRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
-
-    @Autowired
-    private WarehouseRepository warehouseRepository;
+    public StockRecordServiceImpl(StockRecordRepository stockRecordRepository,
+                                  ProductRepository productRepository,
+                                  WarehouseRepository warehouseRepository) {
+        this.stockRecordRepository = stockRecordRepository;
+        this.productRepository = productRepository;
+        this.warehouseRepository = warehouseRepository;
+    }
 
     @Override
     public StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord record) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+
+        Warehouse warehouse = warehouseRepository.findById(warehouseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Warehouse not found"));
 
         List<StockRecord> existing = stockRecordRepository.findByProductId(productId);
         for (StockRecord sr : existing) {
@@ -35,14 +44,17 @@ public class StockRecordServiceImpl implements StockRecordService {
             }
         }
 
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        if (record.getCurrentQuantity() < 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative");
+        }
 
-        Warehouse warehouse = warehouseRepository.findById(warehouseId)
-                .orElseThrow(() -> new ResourceNotFoundException("Warehouse not found"));
+        if (record.getReorderThreshold() <= 0) {
+            throw new IllegalArgumentException("Invalid reorder threshold");
+        }
 
         record.setProduct(product);
         record.setWarehouse(warehouse);
+        record.setLastUpdated(LocalDateTime.now());
 
         return stockRecordRepository.save(record);
     }
@@ -63,4 +75,3 @@ public class StockRecordServiceImpl implements StockRecordService {
         return stockRecordRepository.findByWarehouseId(warehouseId);
     }
 }
-
