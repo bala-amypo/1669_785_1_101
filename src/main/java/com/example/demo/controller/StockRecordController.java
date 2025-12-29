@@ -32,16 +32,16 @@ public class StockRecordController {
     }
 
     @GetMapping("/product/{productId}")
-    public Product getProduct(@PathVariable Long id) {
-        return productService.getProduct(id);
+    public Product getProduct(@PathVariable Long productId) {
+        return productService.getProduct(productId);
     }
     // public List<StockRecord> byProduct(@PathVariable Long productId) {
     //     return stockRecordService.getRecordsBy_product(productId);
     // }
 
     @GetMapping("/warehouse/{warehouseId}")
-    public Warehouse getware(@PathVariable Long id) {
-return warehouseService.getWarehouse(id);
+    public Warehouse getware(@PathVariable Long warehouseId) {
+return warehouseService.getWarehouse(warehouseId);
 }
     // public List<StockRecord> byWarehouse(@PathVariable Long warehouseId) {
     //     return stockRecordService.getRecordsByWarehouse(warehouseId);
