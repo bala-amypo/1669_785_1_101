@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.exception.IllegalArgumentException;
 import com.example.demo.model.Product;
 import com.example.demo.model.StockRecord;
 import com.example.demo.model.Warehouse;
