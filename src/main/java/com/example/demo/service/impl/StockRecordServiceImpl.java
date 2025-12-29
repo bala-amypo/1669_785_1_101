@@ -10,11 +10,12 @@ import com.example.demo.repository.StockRecordRepository;
 import com.example.demo.repository.WarehouseRepository;
 import com.example.demo.service.StockRecordService;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service("stockRecordServiceImpl")
+@Transactional 
 public class StockRecordServiceImpl implements StockRecordService {
 
     private final StockRecordRepository stockRecordRepository;
@@ -30,6 +31,7 @@ public class StockRecordServiceImpl implements StockRecordService {
     }
 
     @Override
+     @Transactional 
     public StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord record) {
 
         Product product = productRepository.findById(productId)
