@@ -56,8 +56,8 @@ return warehouseService.getWarehouse(warehouseId);
     //     return stockRecordService.getStockRecord(id);
     // }
     @GetMapping
-    public List<StockRecord> get(@PathVariable Long id) {
-        return stockRecordService.getStockRecord(id);
+    public List<StockRecord> get() {
+        return stockRecordService.getStockRecord();
     }
    
 //  public ResponseEntity<StockRecord> getStockRecordById(@PathVariable Long id) {
