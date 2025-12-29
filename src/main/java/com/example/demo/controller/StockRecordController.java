@@ -51,23 +51,27 @@ return warehouseService.getWarehouse(warehouseId);
     //     return stockRecordService.getRecordsByWarehouse(warehouseId);
     // }
 
-    @GetMapping("/{id}")
+    // @GetMapping("/{id}")
     // public StockRecord get(@PathVariable Long id) {
     //     return stockRecordService.getStockRecord(id);
     // }
-   
- public ResponseEntity<StockRecord> getStockRecordById(@PathVariable Long id) {
-        // Removed: logger.info("Fetching stock record with id: {}", id);
-        
-        try {
-            StockRecord stockRecord = stockRecordService.getStockRecord(id);
-            return ResponseEntity.ok(stockRecord);
-        } catch (ResourceNotFoundException ex) {
-            // Removed: logger.error("Stock record not found with id: {}", id, ex);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        } catch (Exception ex) {
-            // Removed: logger.error("Error fetching stock record with id: {}", id, ex);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @GetMapping
+    public List<StockRecord> get(@PathVariable Long id) {
+        return stockRecordService.getStockRecord(id);
     }
+   
+//  public ResponseEntity<StockRecord> getStockRecordById(@PathVariable Long id) {
+//         // Removed: logger.info("Fetching stock record with id: {}", id);
+        
+//         try {
+//             StockRecord stockRecord = stockRecordService.getStockRecord(id);
+//             return ResponseEntity.ok(stockRecord);
+//         } catch (ResourceNotFoundException ex) {
+//             // Removed: logger.error("Stock record not found with id: {}", id, ex);
+//             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//         } catch (Exception ex) {
+//             // Removed: logger.error("Error fetching stock record with id: {}", id, ex);
+//             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//         }
+//     }
 }

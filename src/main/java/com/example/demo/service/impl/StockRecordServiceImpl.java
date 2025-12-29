@@ -69,8 +69,8 @@ public class StockRecordServiceImpl implements StockRecordService {
     // }
 
     @Override
-    public StockRecord> getStockRecord(Long id) {
-        return stockRecordRepository.findById(id);
+    public List<StockRecord> getStockRecord() {
+        return stockRecordRepository.findAll();
     }
 //   @Override
 //     public StockRecord getStockRecord(Long id) {
