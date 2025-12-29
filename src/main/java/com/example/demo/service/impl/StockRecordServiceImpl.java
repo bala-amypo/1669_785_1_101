@@ -67,19 +67,24 @@ public class StockRecordServiceImpl implements StockRecordService {
     //     return stockRecordRepository.findById(id)
     //             .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found"));
     // }
-  @Override
-    public StockRecord getStockRecord(Long id) {
-        // First validate the ID
-        if (id == null) {
-            throw new IllegalArgumentException("StockRecord not found");
-        }
-        
-        // Try to find the record
-        StockRecord stockRecord = stockRecordRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found with id: " + id));
-        
-        return stockRecord;
+
+    @Override
+    public StockRecord> getStockRecord(Long id) {
+        return stockRecordRepository.findById(id);
     }
+//   @Override
+//     public StockRecord getStockRecord(Long id) {
+//         // First validate the ID
+//         if (id == null) {
+//             throw new IllegalArgumentException("StockRecord not found");
+//         }
+        
+//         // Try to find the record
+//         StockRecord stockRecord = stockRecordRepository.findById(id)
+//                 .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found with id: " + id));
+        
+//         return stockRecord;
+//     }
     @Override
     public List<StockRecord> getRecordsBy_product(Long productId) {
         return stockRecordRepository.findByProductId(productId);
