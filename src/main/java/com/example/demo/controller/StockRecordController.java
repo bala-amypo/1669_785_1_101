@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/stocks")
 @SecurityRequirement(name="bearerAuth")
 public class StockRecordController {
-
+    @Autowired ProductService productService;
     private final StockRecordService stockRecordService;
 
     public StockRecordController(StockRecordService stockRecordService) {
@@ -27,9 +27,12 @@ public class StockRecordController {
     }
 
     @GetMapping("/product/{productId}")
-    public List<StockRecord> byProduct(@PathVariable Long productId) {
-        return stockRecordService.getRecordsBy_product(productId);
+    public Product getProduct(@PathVariable Long id) {
+        return productService.getProduct(id);
     }
+    // public List<StockRecord> byProduct(@PathVariable Long productId) {
+    //     return stockRecordService.getRecordsBy_product(productId);
+    // }
 
     @GetMapping("/warehouse/{warehouseId}")
     public List<StockRecord> byWarehouse(@PathVariable Long warehouseId) {
