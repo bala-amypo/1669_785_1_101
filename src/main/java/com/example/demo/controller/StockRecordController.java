@@ -9,6 +9,7 @@ import com.example.demo.service.WarehouseService;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -48,7 +49,21 @@ return warehouseService.getWarehouse(warehouseId);
     // }
 
     @GetMapping("/{id}")
-    public StockRecord get(@PathVariable Long id) {
-        return stockRecordService.getStockRecord(id);
+    // public StockRecord get(@PathVariable Long id) {
+    //     return stockRecordService.getStockRecord(id);
+    // }
+   
+public ResponseEntity<StockRecord> getStockById(@PathVariable Long id) {
+    try {
+        StockRecord stock = stockService.findById(id);
+        if (stock == null) {
+            return ResponseEntity.notFound().build(); // Should return 404, not 500
+        }
+        return ResponseEntity.ok(stock);
+    } catch (Exception e) {
+        // Log the actual error
+        logger.error("Error fetching stock with id: " + id, e);
+        return ResponseEntity.internalServerError().build();
     }
+}
 }
