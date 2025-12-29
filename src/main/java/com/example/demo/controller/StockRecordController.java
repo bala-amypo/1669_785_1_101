@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.StockRecord;
+import com.example.demo.model.Warehouse;
+import com.example.demo.model.productServic;
 import com.example.demo.service.StockRecordService;
+import com.example.demo.service.ProductService;
+import com.example.demo.service.WarehouseService;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -13,6 +17,7 @@ import java.util.List;
 @SecurityRequirement(name="bearerAuth")
 public class StockRecordController {
     @Autowired ProductService productService;
+    @Autowired WarehouseService warehouseService;
     private final StockRecordService stockRecordService;
 
     public StockRecordController(StockRecordService stockRecordService) {
@@ -35,9 +40,12 @@ public class StockRecordController {
     // }
 
     @GetMapping("/warehouse/{warehouseId}")
-    public List<StockRecord> byWarehouse(@PathVariable Long warehouseId) {
-        return stockRecordService.getRecordsByWarehouse(warehouseId);
-    }
+    public Warehouse get(@PathVariable Long id) {
+return warehouseService.getWarehouse(id);
+}
+    // public List<StockRecord> byWarehouse(@PathVariable Long warehouseId) {
+    //     return stockRecordService.getRecordsByWarehouse(warehouseId);
+    // }
 
     @GetMapping("/{id}")
     public StockRecord get(@PathVariable Long id) {
