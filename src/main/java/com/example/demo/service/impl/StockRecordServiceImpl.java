@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.exception.IllegalArgumentException;
+// import com.example.demo.exception.IllegalArgumentException;
 import com.example.demo.model.Product;
 import com.example.demo.model.StockRecord;
 import com.example.demo.model.Warehouse;
@@ -60,11 +60,11 @@ public class StockRecordServiceImpl implements StockRecordService {
         return stockRecordRepository.save(record);
     }
 
-    @Override
-    public StockRecord getStockRecord(Long id) {
-        return stockRecordRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found"));
-    }
+    // @Override
+    // public StockRecord getStockRecord(Long id) {
+    //     return stockRecordRepository.findById(id)
+    //             .orElseThrow(() -> new ResourceNotFoundException("StockRecord not found"));
+    // }
   @Override
     public StockRecord getStockRecord(Long id) {
         // First validate the ID
