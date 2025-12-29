@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.StockRecord;
 import com.example.demo.model.Warehouse;
-import com.example.demo.model.productServic;
+import com.example.demo.model.Product;
 import com.example.demo.service.StockRecordService;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.WarehouseService;
@@ -40,7 +40,7 @@ public class StockRecordController {
     // }
 
     @GetMapping("/warehouse/{warehouseId}")
-    public Warehouse get(@PathVariable Long id) {
+    public Warehouse getware(@PathVariable Long id) {
 return warehouseService.getWarehouse(id);
 }
     // public List<StockRecord> byWarehouse(@PathVariable Long warehouseId) {
