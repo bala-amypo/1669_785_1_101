@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import com.example.demo.model.StockRecord;
-import com.example.demo.exception.;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Warehouse;
 import com.example.demo.model.Product;
 import com.example.demo.service.StockRecordService;
