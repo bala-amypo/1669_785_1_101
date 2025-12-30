@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service("stockRecordServiceImpl")
-@Transactional 
 public class StockRecordServiceImpl implements StockRecordService {
 
     private final StockRecordRepository stockRecordRepository;
@@ -31,7 +30,7 @@ public class StockRecordServiceImpl implements StockRecordService {
     }
 
     @Override
-     @Transactional 
+     
     public StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord record) {
 
         Product product = productRepository.findById(productId)
